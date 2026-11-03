@@ -41,6 +41,6 @@ jobs:
               def handle_data(self, data):
                   if self.active: self.parts.append(data)
           p=Scripts(); p.feed(Path("site/index.html").read_text())
-          Path("/tmp/site-inline.js").write_text("\n".join(p.parts))
+          Path("/tmp/site-inline.mjs").write_text("\n".join(p.parts))
           PY
           node --check /tmp/site-inline.js
