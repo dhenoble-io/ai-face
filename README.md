@@ -34,3 +34,16 @@ Open this repository in Android Studio, sync Gradle, and run the app on an Andro
 6. Test performance, thermal behaviour, battery use, and compatibility on the target Android 11 handset.
 
 Never use another person's face or voice without their permission. AI-altered output must remain clearly disclosed.
+
+## Synthetic-media disclosure
+The live camera preview now carries a persistent **AI-ALTERED PREVIEW • SYNTHETIC MEDIA** label. Keep an equally visible disclosure in every future transformed preview and any exported or streamed output. Do not use the app to mislead call participants about who they are seeing or hearing.
+
+## Remaining production work (not yet implemented)
+The following are not delivered by this repository milestone:
+- A licensed, mobile-optimised facial identity/reenactment model and its model weights.
+- Reference-video face selection, identity feature extraction, live frame inference, compositing, temporal stabilisation, and GPU/NPU acceleration.
+- A licensed female voice-conversion model, streaming audio inference, echo/noise handling, and low-latency audio output.
+- A supported camera/microphone integration path for each calling app and Android device. Android's public app APIs do not provide a universal system-wide virtual camera or microphone.
+- On-device performance, quality, privacy, and safety validation on the actual Android 11 handset.
+
+A reference video is an identity source for a future model pipeline; the current app only imports and previews it. No face identity transfer or voice conversion is performed. A successful Gradle build and real-device test are still required before calling this production-ready.
