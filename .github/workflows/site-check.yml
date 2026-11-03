@@ -17,10 +17,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Validate website files
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate website and JavaScript
         run: |
           test -s site/index.html
           test -s site/README.md
           grep -q 'getUserMedia' site/index.html
           grep -q 'MediaRecorder' site/index.html
-          grep -q 'AI-ASSISTED CONTENT' site/index.html
+          grep -q 'FACE_LANDMARKS_TESSELATION' site/index.html
+          grep -q 'captureStream' site/index.html
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          class Scripts(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.active=False; self.parts=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag == "script": self.active=True
+              def handle_endtag(self, tag):
+                  if tag == "script": self.active=False
+              def handle_data(self, data):
+                  if self.active: self.parts.append(data)
+          p=Scripts(); p.feed(Path("site/index.html").read_text())
+          Path("/tmp/site-inline.js").write_text("\n".join(p.parts))
+          PY
+          node --check /tmp/site-inline.js
