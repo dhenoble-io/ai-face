@@ -43,4 +43,4 @@ jobs:
           p=Scripts(); p.feed(Path("site/index.html").read_text())
           Path("/tmp/site-inline.mjs").write_text("\n".join(p.parts))
           PY
-          node --check /tmp/site-inline.js
+          node --check /tmp/site-inline.mjs
