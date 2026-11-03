@@ -125,11 +125,16 @@ private fun AiFaceScreen() {
 
             Text("Live camera", color = Color.White, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
             if (cameraEnabled && hasCameraPermission) {
-                CameraFacePreview(
-                    Modifier.fillMaxWidth().height(260.dp),
-                    onFaceCount = { faceCount = it },
-                    onError = { cameraError = it }
-                )
+                Box(Modifier.fillMaxWidth()) {
+                    CameraFacePreview(
+                        Modifier.fillMaxWidth().height(260.dp),
+                        onFaceCount = { faceCount = it },
+                        onError = { cameraError = it }
+                    )
+                    SyntheticDisclosureOverlay(
+                        Modifier.align(Alignment.TopCenter).padding(10.dp)
+                    )
+                }
                 Text(if (faceCount > 0) "$faceCount face detected" else "Looking for a face…", color = Muted)
             } else {
                 Box(Modifier.fillMaxWidth().height(170.dp).background(Panel, RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center) {
