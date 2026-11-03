@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b12"><meta name="description" content="AI FACE — private live camera studio for creating personal video content.">
+<title>AI FACE — Live Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#090b12;--panel:#141925;--panel2:#1b2231;--line:#2a3447;--text:#f6f7fb;--muted:#9aa6bb;--accent:#a99aff;--pink:#f1a6c8;--good:#71d8ae}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#272044 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:13px 17px;font-weight:700;transition:.18s}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:linear-gradient(110deg,#a99aff,#e3a5cb);color:#151222}.secondary{background:#242d3e;color:#f4f5fb;border:1px solid var(--line)}.danger{background:#512638;color:#ffe8ef;border:1px solid #80445d}.wrap{max-width:1180px;margin:auto;padding:22px 20px 48px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}.brand{display:flex;gap:12px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#a99aff,#ed9fc5);display:grid;place-items:center;color:#171321;font-size:22px;font-weight:900}.brand strong{font-size:18px;letter-spacing:.12em}.brand small{display:block;color:var(--muted);font-size:11px;letter-spacing:.04em}.privacy{font-size:12px;color:var(--good);border:1px solid #315f50;border-radius:99px;padding:7px 11px}.hero{margin:0 0 22px}.eyebrow{color:var(--pink);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(27px,5vw,43px);line-height:1.08;margin:7px 0 9px;letter-spacing:-.04em}.hero p{color:var(--muted);margin:0;max-width:650px}.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.85fr);gap:18px;align-items:start}.panel{background:linear-gradient(160deg,#171e2b,#111722);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 18px 60px #0003}.panel h2{font-size:15px;margin:0 0 13px}.stage{position:relative;aspect-ratio:4/3;background:#05070c;border-radius:16px;overflow:hidden;display:grid;place-items:center}.stage video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:none}.placeholder{text-align:center;color:var(--muted);padding:25px}.placeholder .cam{font-size:38px;display:block;margin-bottom:8px}.disclose{position:absolute;top:12px;left:12px;right:12px;text-align:center;background:#171322dc;border:1px solid #9d8be8;border-radius:9px;padding:7px;font-size:10px;font-weight:900;letter-spacing:.08em}.live{position:absolute;bottom:12px;left:12px;display:flex;align-items:center;gap:7px;background:#090b12c9;padding:6px 10px;border-radius:99px;font-size:11px}.dot{width:7px;height:7px;border-radius:50%;background:#ff637f}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}.toolbar button{flex:1;min-width:120px}.status{color:var(--muted);font-size:12px;margin:10px 2px 0;min-height:18px}.section{margin-top:17px}.section label{display:block;font-size:12px;color:#d9deea;margin-bottom:7px}.filebox{border:1px dashed #46516a;border-radius:14px;padding:14px;background:#0d121c}.filebox input{width:100%;font-size:12px;color:var(--muted)}.refpreview{width:100%;max-height:170px;object-fit:contain;background:#070a10;border-radius:10px;margin-top:10px;display:none}.hint{font-size:11px;color:var(--muted);margin:8px 0 0}.setting{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #273144}.setting:last-child{border:0}.setting strong{font-size:13px;display:block}.setting small{color:var(--muted);font-size:11px}.toggle{accent-color:#b4a4ff;width:19px;height:19px}.range{width:100%;accent-color:#b4a4ff}.recording{color:#ff8da4!important}.recording .dot{animation:pulse 1s infinite}@keyframes pulse{50%{opacity:.25}}.saved{display:none;margin-top:13px;padding:12px;background:#10251f;border:1px solid #285844;border-radius:12px}.saved a{color:#a5f0cf;font-weight:700}.notice{margin-top:18px;border:1px solid #4b405f;background:#171426;border-radius:15px;padding:13px;color:#c7c1d8;font-size:12px}.notice strong{color:#fff}.foot{text-align:center;color:#657087;font-size:11px;margin-top:24px}.hidden{display:none!important}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.wrap{padding:16px 13px 34px}.panel{padding:13px}.top{margin-bottom:20px}.stage{aspect-ratio:3/4}.toolbar button{min-width:calc(50% - 8px)}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div class="brand"><div class="logo">✦</div><div><strong>AI FACE</strong><small>PERSONAL LIVE CONTENT STUDIO</small></div></div><div class="privacy">● PRIVATE BY DESIGN</div></header>
+<section class="hero"><div class="eyebrow">Your camera. Your story.</div><h1>Step back in front<br>of the camera.</h1><p>A private live recording workspace. Bring in a reference clip, check your camera, and record content directly from your browser.</p></section>
+<div class="grid">
+<section class="panel"><h2>Live camera studio</h2><div class="stage" id="stage"><div class="placeholder" id="placeholder"><span class="cam">◉</span><strong>Your camera preview will appear here</strong><div class="hint">Allow camera access when your browser asks.</div></div><video id="camera" autoplay muted playsinline></video><div class="disclose">AI-ASSISTED CONTENT • SYNTHETIC MEDIA</div><div class="live hidden" id="recBadge"><span class="dot"></span> RECORDING <span id="timer">00:00</span></div></div>
+<div class="toolbar"><button class="primary" id="startCamera">Start camera</button><button class="secondary" id="flipCamera" disabled>Switch camera</button><button class="primary" id="record" disabled>● Start recording</button><button class="danger" id="stopRecord" disabled>Stop recording</button></div>
+<div class="status" id="cameraStatus" role="status">Camera is off. Reference videos stay on this device.</div><div class="saved" id="saved"><strong>Recording ready</strong><div class="hint" id="savedMeta"></div><a id="download" download="ai-face-recording.webm">Download your video ↗</a></div>
+</section>
+<aside class="panel"><h2>Your reference video</h2><div class="filebox"><label for="reference">Choose your sister's pre-burn reference clip</label><input id="reference" type="file" accept="video/*"><video id="refPreview" class="refpreview" controls playsinline></video><p class="hint" id="refStatus">Select a clip to preview it locally. It is not uploaded.</p></div>
+<div class="section"><h2>Recording settings</h2><div class="setting"><div><strong>Mirror preview</strong><small>Natural selfie preview</small></div><input class="toggle" id="mirror" type="checkbox" checked></div><div class="setting"><div><strong>Record microphone</strong><small>Use your real voice</small></div><input class="toggle" id="mic" type="checkbox" checked></div><div class="setting"><div><strong>Video quality</strong><small>Lower settings help older phones</small></div><select id="quality" class="secondary" style="padding:8px"><option value="720">720p</option><option value="480">480p (lighter)</option><option value="1080">1080p</option></select></div></div>
+<div class="section"><h2>Camera status</h2><div class="setting"><div><strong>Face tracking</strong><small id="trackingStatus">Not connected</small></div><span id="trackingDot">○</span></div><p class="hint">This first web build provides live camera capture and recording. It does not yet reconstruct or replace facial features using the reference clip.</p></div>
+</aside></div>
+<div class="notice"><strong>Important:</strong> This build does not yet apply your sister's pre-burn face to the live camera. The reference clip is stored only in browser memory for preview; it is not used to train a model or sent to a server. The current recorder captures the camera and microphone you choose. The transformation engine must be integrated and tested before claiming face restoration works.</div>
+<div class="foot">AI FACE · Browser-based live recording · Your media stays on your device unless you choose to share it.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let stream=null,recorder=null,chunks=[],facing='user',startedAt=0,tick=null,lastUrl=null;
+const video=$('camera');
+function setStatus(s){$('cameraStatus').textContent=s}
+function supportedMime(){return ['video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(t=>MediaRecorder.isTypeSupported(t))||''}
+async function startCamera(){
+ try{
+  if(!navigator.mediaDevices?.getUserMedia)throw new Error('Camera access needs HTTPS or localhost. Open this site over a secure connection.');
+  stopCamera();
+  const wantAudio=$('mic').checked;
+  stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:facing,width:{ideal:Number($('quality').value)},height:{ideal:Math.round(Number($('quality').value)*4/3)},frameRate:{ideal:24,max:30}},audio:wantAudio?{echoCancellation:true,noiseSuppression:true}:false});
+  video.srcObject=stream;video.style.display='block';$('placeholder').classList.add('hidden');video.style.transform=$('mirror').checked?'scaleX(-1)':'none';
+  $('record').disabled=false;$('flipCamera').disabled=false;$('startCamera').textContent='Restart camera';
+  setStatus('Camera ready. Your preview is live on this device.');
+ }catch(e){setStatus(e.message||'Could not start camera. Check browser permissions.');}
+}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}video.srcObject=null;video.style.display='none';$('placeholder').classList.remove('hidden');$('record').disabled=true;$('flipCamera').disabled=true}
+function stopRecording(){if(recorder&&recorder.state!=='inactive')recorder.stop()}
+function fmt(ms){let n=Math.floor(ms/1000);return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
+$('startCamera').onclick=startCamera;
+$('flipCamera').onclick=async()=>{facing=facing==='user'?'environment':'user';await startCamera()};
+$('mirror').onchange=()=>{video.style.transform=$('mirror').checked?'scaleX(-1)':'none'};
+$('mic').onchange=()=>{if(stream){setStatus('Restart the camera to apply the microphone setting.')}};
+$('quality').onchange=()=>{if(stream)setStatus('Restart the camera to apply the new quality.')};
+$('record').onclick=()=>{
+ if(!stream)return;
+ try{
+  chunks=[];const mime=supportedMime();recorder=new MediaRecorder(stream,mime?{mimeType:mime,videoBitsPerSecond:2500000}:undefined);
+  recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};
+  recorder.onstop=()=>{
+   clearInterval(tick);$('recBadge').classList.add('hidden');
+   const blob=new Blob(chunks,{type:recorder.mimeType||'video/webm'});
+   if(lastUrl)URL.revokeObjectURL(lastUrl);lastUrl=URL.createObjectURL(blob);
+   $('download').href=lastUrl;$('download').download='ai-face-'+new Date().toISOString().replace(/[:.]/g,'-')+'.webm';
+   $('savedMeta').textContent=(blob.size/1024/1024).toFixed(1)+' MB · '+fmt(Date.now()-startedAt);
+   $('saved').style.display='block';setStatus('Recording finished. Download it to save on your device.');
+   $('record').disabled=false;$('stopRecord').disabled=true;
+  };
+  recorder.start(500);startedAt=Date.now();$('recBadge').classList.remove('hidden');$('record').disabled=true;$('stopRecord').disabled=false;
+  tick=setInterval(()=>$('timer').textContent=fmt(Date.now()-startedAt),500);setStatus('Recording live camera'+(stream.getAudioTracks().length?' and microphone':'')+'.');
+ }catch(e){setStatus('Recording could not start: '+e.message)}
+};
+$('stopRecord').onclick=stopRecording;
+$('reference').onchange=()=>{
+ const file=$('reference').files?.[0];if(!file)return;
+ if(!file.type.startsWith('video/')){$('refStatus').textContent='Please choose a video file.';return}
+ if(file.size>100*1024*1024){$('refStatus').textContent='Choose a video smaller than 100 MB.';return}
+ const url=URL.createObjectURL(file);$('refPreview').src=url;$('refPreview').style.display='block';$('refStatus').textContent=file.name+' · '+(file.size/1024/1024).toFixed(1)+' MB · local preview only.';
+};
+window.addEventListener('beforeunload',()=>{stopRecording();stopCamera();if(lastUrl)URL.revokeObjectURL(lastUrl)});
+if(!window.MediaRecorder)$('cameraStatus').textContent='This browser does not support video recording. Try a recent version of Chrome.';
+</script></body></html>
