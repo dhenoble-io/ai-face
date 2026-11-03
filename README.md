@@ -1,49 +1,40 @@
 # AI FACE
 
-Private, Android-first prototype for consent-based, clearly disclosed female face and voice transformation.
+AI FACE is an Android-first, clearly disclosed camera prototype. This test build lets you import a reference clip locally, preview it, open the front camera, and verify on-device face detection.
 
-## Current implementation
-- Native Android app using Kotlin and Jetpack Compose.
+## Included in this test build
+- Kotlin + Jetpack Compose Android app.
 - CameraX front-camera preview.
 - On-device ML Kit face detection and face-count status.
-- Female-only identity workflow.
-- Import an authorised MP4/video reference through Android's document picker.
-- Validate the selected file: it must contain a video track, be no longer than 30 seconds, and be under 100 MB.
-- Copy the reference into app-private internal storage and preview it locally.
-- Female voice mode is displayed as a planned feature; no voice-conversion engine is connected.
+- Import and replace a video using Android's document picker.
+- Validate imported videos: video track required, maximum 30 seconds, maximum 100 MB.
+- Store the imported clip in app-private storage and preview it silently in a loop.
+- Persistent **AI-ALTERED PREVIEW • SYNTHETIC MEDIA** disclosure over the live camera preview.
+- GitHub Actions builds a debug APK and publishes it as the `ai-face-debug-apk` workflow artifact for 14 days.
 
-## Important status
-This milestone imports and previews the authorised reference video, and provides camera preview and face detection. It does NOT yet perform face replacement, facial reenactment, voice conversion, or virtual camera/microphone routing into WhatsApp, Telegram, Zoom, or Google Meet.
+## Install and test
+1. Open the **Actions** tab in this repository: https://github.com/dhenoble-io/ai-face/actions
+2. Open the newest successful **Android build** run.
+3. Under **Artifacts**, download `ai-face-debug-apk`.
+4. Extract the ZIP and install `app-debug.apk` on the TECNO LE6 (Android 11+).
+5. Allow camera permission.
+6. Test **Enable camera**, face detection, **Import / replace reference video**, and reference playback.
 
-A normal Android app cannot universally replace another app's camera and microphone. External-call integration on Android 11 is device- and app-dependent and must be tested on the actual handset. Do not root the phone as a first step.
+Android may ask you to allow installation from the browser or file manager used to open the APK. Only install a build from this repository.
 
-## Import the reference
-Run the app, tap **Import / replace reference video**, and select the authorised clip (including 1000426689.mp4) from the Android file picker. The app copies it into private app storage. This feature does not upload the video to a server.
+## What this build does not do
+This is a functional camera/reference-video test app, not a completed face/voice transformation product. It does **not** transfer a real person's identity onto the live camera, perform voice conversion, record or stream altered output, or replace the camera/microphone inside WhatsApp, Telegram, Zoom, or Google Meet.
 
-## Build
-Requirements: Android Studio, JDK 17, Android SDK 35, Gradle 8.9.
+The reference clip is only imported and previewed; it is not used for identity transfer. A future avatar/filter feature should use a licensed fictional identity and keep synthetic-media disclosure visible. Do not use AI output to mislead call participants about who they are seeing or hearing.
 
-Open this repository in Android Studio, sync Gradle, and run the app on an Android 11+ device. Grant camera permission when prompted.
+## Device compatibility
+The project uses Android API 30 as its minimum (Android 11). Camera performance, heat, memory use, and battery impact still need to be tested on the actual TECNO LE6. A successful CI build does not guarantee device compatibility.
 
-## Next engineering milestones
-1. Benchmark a commercially licensed, mobile-capable facial reenactment model against the handset's CPU/GPU/NPU limits.
-2. Implement actual frame transformation and temporal-stability tests using the imported reference.
-3. Evaluate a real-time female voice-conversion engine and audio latency.
-4. Investigate supported Android call-routing options per target app/device.
-5. Add consent confirmation, privacy controls, secure deletion, and visible synthetic-media disclosure.
-6. Test performance, thermal behaviour, battery use, and compatibility on the target Android 11 handset.
+## Privacy
+- The selected clip is copied to app-private internal storage.
+- This app build does not upload the selected clip.
+- The app requests camera permission only; microphone permission is not needed by the implemented features.
+- Uninstalling the app removes its private app data.
 
-Never use another person's face or voice without their permission. AI-altered output must remain clearly disclosed.
-
-## Synthetic-media disclosure
-The live camera preview now carries a persistent **AI-ALTERED PREVIEW • SYNTHETIC MEDIA** label. Keep an equally visible disclosure in every future transformed preview and any exported or streamed output. Do not use the app to mislead call participants about who they are seeing or hearing.
-
-## Remaining production work (not yet implemented)
-The following are not delivered by this repository milestone:
-- A licensed, mobile-optimised facial identity/reenactment model and its model weights.
-- Reference-video face selection, identity feature extraction, live frame inference, compositing, temporal stabilisation, and GPU/NPU acceleration.
-- A licensed female voice-conversion model, streaming audio inference, echo/noise handling, and low-latency audio output.
-- A supported camera/microphone integration path for each calling app and Android device. Android's public app APIs do not provide a universal system-wide virtual camera or microphone.
-- On-device performance, quality, privacy, and safety validation on the actual Android 11 handset.
-
-A reference video is an identity source for a future model pipeline; the current app only imports and previews it. No face identity transfer or voice conversion is performed. A successful Gradle build and real-device test are still required before calling this production-ready.
+## Build locally
+Requirements: Android Studio, JDK 17, Android SDK 35, Gradle 8.9. Open the repository in Android Studio, sync Gradle, and run the app on an Android 11+ device.
