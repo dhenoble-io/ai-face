@@ -1,0 +1,26 @@
+name: Check AI FACE website
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/site-check.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - '.github/workflows/site-check.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate website files
+        run: |
+          test -s site/index.html
+          test -s site/README.md
+          grep -q 'getUserMedia' site/index.html
+          grep -q 'MediaRecorder' site/index.html
+          grep -q 'AI-ASSISTED CONTENT' site/index.html
